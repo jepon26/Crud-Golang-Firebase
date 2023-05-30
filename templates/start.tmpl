@@ -1,17 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+{{ define "header"}}
+{{ template "header" }}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap HTML5 Structure</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-</head>
 
-<body>
-    b4-table default
-    
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>John Doe</td>
+          <td>johndoe@example.com</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jane Smith</td>
+          <td>janesmith@example.com</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Mike Johnson</td>
+          <td>mikejohnson@example.com</td>
+        </tr>
+      </tbody>
+    </table>
+
+{{ template "footer"}}
+{{ end }}
+
+
   
-  </body>
-  </html>
+
+  
