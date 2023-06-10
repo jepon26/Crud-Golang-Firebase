@@ -14,6 +14,8 @@ var templates = template.Must(template.ParseGlob("templates/*"))
 func main() {
 	// Registering the start function to handle requests to the root URL ("/").
 	http.HandleFunc("/", start)
+	http.HandleFunc("/create", Create)
+
 	log.Println("Server started....")
 	
 	// Starting the HTTP server on port 8080 to listen for incoming requests.
@@ -27,4 +29,6 @@ func start(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello World1")
 }
 
-
+func Create(w http.ResponseWriter, r*http.Request){
+	templates.ExecuteTemplate(w, "create", nil)
+}
