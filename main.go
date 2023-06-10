@@ -23,6 +23,7 @@ func main() {
 // start is the handler function for the root URL ("/").
 func start(w http.ResponseWriter, r *http.Request) {
 	// Writing the "Hello World" message to the ResponseWriter, which sends it as the response to the client.
+	templates.ExecuteTemplate(w, "start", nil)
 	fmt.Fprintf(w, "Hello World1")
 }
 
