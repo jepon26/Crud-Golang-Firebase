@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"html/template"
-	"log"
+	"text/template"
+	//"log"
 	"net/http"
+	_"github.com/go-sql-driver/mysql"
 )
 
 // templates is a global variable that holds the parsed HTML templates.
