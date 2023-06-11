@@ -1,12 +1,33 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"text/template"
+
 	//"log"
 	"net/http"
-	_"github.com/go-sql-driver/mysql"
+
+	_ "github.com/go-sql-driver/mysql"
 )
+
+
+func DBconnection()(connection *sql.DB){
+	Driver:= "mysql"
+	User:= ""
+	Password:=""
+	Name:="System"
+
+
+	connection, err:= sql.Open(Driver, User+":"+Password+"@tcp(127.0.0.1)/"+Name)
+	if err != nil {
+		panic(err.Error())
+	}
+	return connection
+}
+
+
+
 
 // templates is a global variable that holds the parsed HTML templates.
 var templates = template.Must(template.ParseGlob("templates/*"))
@@ -17,7 +38,7 @@ func main() {
 	http.HandleFunc("/", start)
 	http.HandleFunc("/create", Create)
 
-	log.Println("Server started....")
+	fmt.Println("Server started....")
 	
 	// Starting the HTTP server on port 8080 to listen for incoming requests.
 	http.ListenAndServe(":8080", nil)
