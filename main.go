@@ -14,8 +14,8 @@ import (
 
 func DBconnection()(connection *sql.DB){
 	Driver:= "mysql"
-	User:= ""
-	Password:=""
+	User:= "add User"
+	Password:="Add Password"
 	Name:="System"
 
 
@@ -46,9 +46,19 @@ func main() {
 
 // start is the handler function for the root URL ("/").
 func start(w http.ResponseWriter, r *http.Request) {
+
+	establishedConnection:= DBconnection()
+
+	insertRecords,err:= establishedConnection.Prepare("INSERT INTO employees(name, email) VALUES('Javier','jepon26@gmail.com')")
+
+      if err!=nil{
+		panic(err.Error())
+	  }
+	  insertRecords.Exec()
+	  
+
 	// Writing the "Hello World" message to the ResponseWriter, which sends it as the response to the client.
 	templates.ExecuteTemplate(w, "start", nil)
-	fmt.Fprintf(w, "Hello World1")
 }
 
 func Create(w http.ResponseWriter, r*http.Request){
