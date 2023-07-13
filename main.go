@@ -7,12 +7,15 @@ import (
 	"net/http"
 	"text/template"
 
-	firebase "firebase.google.com/go"
-	"google.golang.org/api/option"
+	import "firebase.google.com/go/v4"
 )
 
 // templates is a global variable that holds the parsed HTML templates.
 var templates = template.Must(template.ParseGlob("templates/*"))
+
+
+var { initializeApp } = require('firebase-admin/app');
+
 
 // start is the handler function for the root URL ("/").
 func start(w http.ResponseWriter, r *http.Request) {
@@ -62,4 +65,4 @@ func main() {
 	// Start the HTTP server
 	fmt.Println("Server listening on http://localhost:8080/")
 	log.Fatal(http.ListenAndServe(":8080", nil))
-}
+}	
